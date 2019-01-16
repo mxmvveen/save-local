@@ -17,3 +17,7 @@ This will start the server on http://localhost:8000/
     todo: "add a todo to the list"
 }
 ```
+
+- To remove an item create a post request to http://localhost:8000/remove
+- Send the key from the item that you want to remove in an object to remove that item from the JSON file.
+for example `{key: 'bla'}`

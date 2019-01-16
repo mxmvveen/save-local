@@ -41,3 +41,13 @@ app.route('/add').post((req, res) => {
         if (err) throw err;
     });
 });
+
+
+app.route('/remove').post((req, res) => {
+    delete currentData[req.body['key']];
+
+    res.status(201).send(true);
+    fs.writeFile('data.json', JSON.stringify(currentData), err => {
+        if (err) throw err;
+    });
+});
