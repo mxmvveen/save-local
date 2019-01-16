@@ -1,8 +1,8 @@
 # Save in local JSON file
 
 - Clone this project on your computer.
-- Run `npm i`
 - open the project in a terminal window
+- Run `npm i`
 - Run `npm start`
 
 This will start the server on http://localhost:8000/
