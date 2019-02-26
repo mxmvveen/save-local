@@ -7,7 +7,7 @@ const sourcesDir = '/sources/';
 
 let currentData;
 
-fs.readFile('data.json', 'utf8', function (error, data) {
+fs.readFile('db.json', 'utf8', function (error, data) {
     currentData = JSON.parse(data);
 });
 
@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 });
 
 app.route('/').get((req, res) => {
-    fs.readFile('data.json', 'utf8', function (error, data) {
+    fs.readFile('db.json', 'utf8', function (error, data) {
         currentData = JSON.parse(data);
         res.send(data);
     });
@@ -37,7 +37,7 @@ app.route('/add').post((req, res) => {
     currentData[req.body['key']] = req.body;
 
     res.status(201).send(true);
-    fs.writeFile('data.json', JSON.stringify(currentData), err => {
+    fs.writeFile('db.json', JSON.stringify(currentData), err => {
         if (err) throw err;
     });
 });
@@ -47,7 +47,7 @@ app.route('/remove').post((req, res) => {
     delete currentData[req.body['key']];
 
     res.status(201).send(true);
-    fs.writeFile('data.json', JSON.stringify(currentData), err => {
+    fs.writeFile('db.json', JSON.stringify(currentData), err => {
         if (err) throw err;
     });
 });
