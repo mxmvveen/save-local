@@ -1,1 +1,19 @@
-{}
+{
+    "users": {
+        "frederik": {
+          "messages": []
+        },
+        "wouter": {
+          "messages": []
+        },
+        "samantha": {
+          "messages": []
+        },
+        "jessy": {
+          "messages": []
+        },
+        "pieter": {
+          "messages": []
+        }
+      }
+}
