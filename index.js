@@ -3,7 +3,7 @@ const app = express();
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
-const sourcesDir = '/sources/';
+// const sourcesDir = '/sources/';
 
 let currentData;
 
@@ -26,16 +26,36 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.route('/').get((req, res) => {
+// app.route('/getUsers').get((req, res) => {
+//     fs.readFile('db.json', 'utf8', function (error, data) {
+//         const users = Object.keys(JSON.parse(data).users);
+//         res.send(users);
+//     });
+// });
+
+app.route('/logIn').post((req, res) => {
     fs.readFile('db.json', 'utf8', function (error, data) {
-        currentData = JSON.parse(data);
-        res.send(data);
+        let response;
+        const dbData = JSON.parse(data);
+        const userNames = Object.keys(dbData.users);
+        const user = req.body.user;
+        if (userNames.indexOf(user) > -1) {
+            response = {
+                user: user,
+                messages: dbData.users[user].messages
+            }
+        } else {
+            response = {
+                user: false
+            }
+        }
+        res.send(response);
     });
 });
 
 app.route('/add').post((req, res) => {
-    currentData[req.body['key']] = req.body;
-
+    currentData.users[req.body['user']].messages = req.body.messages;
+    
     res.status(201).send(true);
     fs.writeFile('db.json', JSON.stringify(currentData), err => {
         if (err) throw err;

@@ -1,19 +1,31 @@
 {
     "users": {
         "frederik": {
-          "messages": []
+            "messages": []
         },
         "wouter": {
-          "messages": []
+            "messages": []
         },
         "samantha": {
-          "messages": []
+            "messages": []
         },
         "jessy": {
-          "messages": []
+            "messages": [
+                {
+                    "title": "this is the inbox of jessy",
+                    "message": "and this is the message!",
+                    "read": false
+                }
+            ]
         },
         "pieter": {
-          "messages": []
+            "messages": [
+                {
+                    "title": "First message",
+                    "message": "This is the first one",
+                    "read": false
+                }
+            ]
         }
-      }
+    }
 }
